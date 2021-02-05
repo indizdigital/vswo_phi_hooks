@@ -19,6 +19,8 @@ namespace Phi\ViewHelpers;
  *                                                                        *
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 /**
  * This class is the text color view helper for the Fluid templating engine.
  *
@@ -26,23 +28,23 @@ namespace Phi\ViewHelpers;
  * @subpackage Fluid
  * @version
  */
-class LinksViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
+class LinksViewHelper extends AbstractViewHelper {
 
-	
-	
-	
-	/**
-     * return the category items
-     *
-     * @param \string $link
-     * @return \string
-     */	
-	public function render($link) {
-		
-		
+
+	    public function initializeArguments()
+	    {
+	        $this->registerArgument('link', 'string', 'link', true);
+	    }
+
+		 public static function renderStatic(
+		 		 array $arguments,
+		 		 \Closure $renderChildrenClosure,
+		 		 RenderingContextInterface $renderingContext) {
+
+
 		return $_SERVER["REQUEST_URI"] . str_replace("fileadmin/user_upload","pdfs",$link);
 	}
-	
+
 }
 
 ?>

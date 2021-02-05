@@ -1,7 +1,5 @@
 <?php
 
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['typo3/backend.php']['constructPostProcess'][] = \Phi\Hooks\BackendControllerHook::class . '->addJavaScript';
-
 $GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['phi'] = 'EXT:phi_hooks/Configuration/Rte/Phi.yaml';
 
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['Causal\\FileList\\Controller\\FileController'] = array(

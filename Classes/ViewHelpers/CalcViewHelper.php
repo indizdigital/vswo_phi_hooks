@@ -19,6 +19,8 @@ namespace Phi\ViewHelpers;
  *                                                                        *
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 /**
  * This class is the text color view helper for the Fluid templating engine.
  *
@@ -26,20 +28,20 @@ namespace Phi\ViewHelpers;
  * @subpackage Fluid
  * @version
  */
-class CalcViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
+class CalcViewHelper extends AbstractViewHelper {
 
 
+	    public function initializeArguments()
+	    {
+	        $this->registerArgument('param1', 'string', 'param1', true);
+	        $this->registerArgument('param2', 'string', 'param2', true);
+	        $this->registerArgument('operation', 'string', 'operation', true);
+	    }
 
-
-	/**
-     * return the category items
-     *
-     * @param \string $param1
-     * @param \string $param2
-     * @param \string $operation
-     * @return \string
-     */
-	public function render($param1,$param2,$operation) {
+		 public static function renderStatic(
+	 		 array $arguments,
+	 		 \Closure $renderChildrenClosure,
+	 		 RenderingContextInterface $renderingContext) {
 			switch($operation){
 				case "/":
 					return $param1 / $param2;
