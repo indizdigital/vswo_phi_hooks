@@ -12,7 +12,7 @@
  * The TYPO3 project - inspiring people to share!
  */
 
-namespace Phi\Hooks\Controller;
+namespace Phi\PhiHooks\Controller;
 
 
 /**

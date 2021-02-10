@@ -3,7 +3,7 @@
 $GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['phi'] = 'EXT:phi_hooks/Configuration/Rte/Phi.yaml';
 
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['Causal\\FileList\\Controller\\FileController'] = array(
-   'className' => 'Phi\\Hooks\\Controller\\XtFileController'
+   'className' => 'Phi\\PhiHooks\\Controller\\XtFileController'
 );
 
 
