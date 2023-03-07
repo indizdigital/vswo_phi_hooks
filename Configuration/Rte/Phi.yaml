@@ -1,0 +1,68 @@
+imports:
+- { resource: "EXT:rte_ckeditor/Configuration/RTE/Processing.yaml" }
+- { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Base.yaml" }
+- { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Plugins.yaml" }
+- { resource: "EXT:rte_ckeditor_image/Configuration/RTE/Plugin.yaml" }
+
+editor:
+  externalPlugins:
+    youtube: { resource: "EXT:pmx_ttnews/Resources/Public/JavaScript/Ckeditor/Plugins/youtube/plugin.js" }
+
+  config:
+
+    format_tags: "p;h1;h2;h3;h4;h5;pre"
+
+    removePlugins: null
+    contentsCss: "../fileadmin/templates/css/rte.css?v=1"
+    stylesSet:
+      - { name: "Normal", element: "a", attributes: { class: "std"} }
+      - { name: "Download", element: "a", attributes: { class: "download"} }
+      - { name: "Normal", element: "p", attributes: { class: "std"} }
+      - { name: "Lead", element: "p", attributes: { class: "lead"} }
+      - { name: "Boxlinks", element: "p", attributes: { class: "boxlinks"} }
+      - { name: "PDF Download", element: "p", attributes: { class: "pdf-link"} }
+      - { name: "Kreis", element: "p", attributes: { class: "circle-custom"} }
+      - { name: "Kreis Titel", element: "span", attributes: { class: "circle-title"} }
+      - { name: "Kreis Text", element: "span", attributes: { class: "circle-text"} }
+      - { name: "Zitat", element: "p", attributes: { class: "b-quote"} }
+      - { name: "Info Box", element: "p", attributes: { class: "info-box"} }
+      #- { name: "Info Bild", element: "div", attributes: { class: "info-image"} }
+      #- { name: "Info Bild Box", element: "p", attributes: { class: "info-box-image"} }
+      - { name: "Bildunterschrift", element: "p", attributes: { class: "caption"} }
+      - { name: "unsortierte Liste zentriert", element: "ul", attributes: { class: "list-center"} }
+      - { name: "sortierte Liste zentriert", element: "ol", attributes: { class: "list-center"} }
+
+
+    justifyClasses:
+      - text-left
+      - text-center
+      - text-right
+      - text-justify
+
+    extraPlugins:
+      - justify
+      - youtube
+
+    youtube_width: '550'
+    extraAllowedContent: '*(*)[data-*]; iframe'
+
+    toolbarGroups:
+      - { name: format, groups: [format, styles] }
+      - { name: basicstyles, groups: [ basicstyles ] }
+      - { name: paragraph, groups: [ list, indent, blocks, align ] }
+      - { name: clipboard, groups: [clipboard, cleanup, undo] }
+      - { name: editing,   groups: [find, selection, spellchecker] }
+      - { name: links, groups: [ links ] }
+      - { name: insert, groups: [ insert ] }
+      - { name: tools, groups: [ table, specialchar ] }
+      - { name: document,  groups: [ mode, document, doctools ] }
+
+    removeButtons:
+      - Anchor
+      - Underline
+      - Strike
+
+
+processing:
+  allowTags:
+    - iframe
