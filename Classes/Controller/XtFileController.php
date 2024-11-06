@@ -15,6 +15,9 @@
 namespace Phi\PhiHooks\Controller;
 
 
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Database\ConnectionPool;
+
 /**
  * File controller.
  *
@@ -37,15 +40,30 @@ class XtFileController extends \Causal\FileList\Controller\FileController
    */
   public function listAction($path = '',$download=false)
   {
-    if($download == true){
-      $filename = urldecode(basename($path));
-      header('Content-Description: File Transfer');
-      header('Content-Type: application/octet-stream');
-      header('Content-Disposition: attachment; filename="' . $filename . '"');
-      readfile(getcwd() . '/' . urldecode($path));
-      exit;
-    }else{
-      parent::listAction($path);
+
+
+     
+    
+    if($download == true && strpos($path,"/fileadmin/user_upload") === 0){
+      $filename = urldecode($path);
+
+      $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable("sys_file");
+      $shortenedPath = str_replace("/fileadmin","",$filename);
+      
+      $res = $queryBuilder->select("*")->from("sys_file")->where(
+        $queryBuilder->expr()->eq('identifier', $queryBuilder->createNamedParameter($shortenedPath))
+      )->executeQuery();
+
+      if(count($res->fetchAllAssociative())){
+        
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename="' . basename($filename) . '"');
+        readfile(getcwd() . '/' . urldecode($path));
+        exit;
+      }
     }
+    parent::listAction($path);
+    
   }
 }
