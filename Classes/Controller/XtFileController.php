@@ -63,7 +63,7 @@ class XtFileController extends \Causal\FileList\Controller\FileController
         exit;
       }
     }
-    parent::listAction($path);
+    return parent::listAction($path);
     
   }
 }

@@ -1,5 +1,5 @@
 <?php
-namespace Phi\ViewHelpers;
+namespace Phi\PhiHooks\ViewHelpers;
 /*                                                                        *
  * This script is backported from the TYPO3 Flow package "TYPO3.Fluid".   *
  *                                                                        *

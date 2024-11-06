@@ -71,6 +71,7 @@ class InstagramController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
           file_put_contents("insta.error",$result);
         }
       }
+      return $this->htmlResponse();
     }
 
 }
